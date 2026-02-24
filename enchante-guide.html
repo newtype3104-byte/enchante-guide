@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ご案内 | Enchanté Hair</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8965A;
+    --gold-light: #D4B07A;
+    --dark: #1A1610;
+    --dark-mid: #2C2518;
+    --cream: #F5F0E8;
+    --cream-mid: #EDE6D6;
+    --text: #3A3020;
+    --text-light: #6B5F4A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  header {
+    background: var(--dark);
+    padding: 32px 24px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+
+  .salon-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .salon-sub {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: #8A7A5A;
+    text-transform: uppercase;
+  }
+
+  /* Welcome */
+  .welcome {
+    background: var(--dark-mid);
+    padding: 24px;
+    text-align: center;
+    border-bottom: 1px solid #3A3020;
+  }
+
+  .welcome-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .welcome p {
+    color: var(--cream-mid);
+    font-size: 13px;
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+  }
+
+  .welcome strong {
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+
+  /* Main content */
+  main {
+    padding: 0 16px 48px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Section */
+  .section {
+    margin-top: 32px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.25s; }
+  .section:nth-child(3) { animation-delay: 0.4s; }
+  .section:nth-child(4) { animation-delay: 0.55s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Flow cards */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .flow-item {
+    background: white;
+    border-radius: 4px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .flow-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 24px;
+    font-style: italic;
+  }
+
+  .flow-content h3 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+
+  .flow-content p {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+
+  .flow-content .hint {
+    display: inline-block;
+    margin-top: 6px;
+    background: var(--cream-mid);
+    color: var(--gold);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Chat guide */
+  .chat-box {
+    background: white;
+    border-radius: 4px;
+    padding: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .chat-box h3 {
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--cream-mid);
+  }
+
+  .chat-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .chat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .chat-icon {
+    color: var(--gold);
+    font-size: 14px;
+    min-width: 18px;
+  }
+
+  .chat-text {
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .chat-sub {
+    font-size: 11px;
+    color: var(--text-light);
+  }
+
+  /* LINE tips */
+  .tips {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tip {
+    background: white;
+    border-radius: 4px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tip-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .tip h3 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .tip p {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* Notice */
+  .notice {
+    background: #FDF8F0;
+    border: 1px solid rgba(184,150,90,0.3);
+    border-radius: 4px;
+    padding: 16px 18px;
+  }
+
+  .notice-title {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .notice ul {
+    list-style: none;
+  }
+
+  .notice li {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.8;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .notice li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  /* Divider */
+  .divider {
+    text-align: center;
+    margin: 8px 0 4px;
+    color: var(--gold);
+    opacity: 0.4;
+    font-size: 18px;
+    letter-spacing: 0.3em;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--dark);
+    padding: 24px;
+    text-align: center;
+    position: relative;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 4px;
+  }
+
+  .footer-tel {
+    font-size: 12px;
+    color: #6B5F4A;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-tel a {
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+
+  .footer-note {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #5A5040;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="salon-name">Enchanté Hair</div>
+  <div class="salon-sub">Kameoka · Kyoto</div>
+</header>
+
+<div class="welcome">
+  <span class="welcome-icon">💈</span>
+  <p>アンシャンテヘアーへのご登録、ありがとうございます。<br>
+  LINEから<strong>最新の空き状況</strong>がいつでもご確認いただけます。</p>
+</div>
+
+<main>
+
+  <!-- 予約の流れ -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-title">Reservation Flow</span>
+    </div>
+
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <h3>メニューを確認する</h3>
+          <p>下のメニューから【メニュー（所要時間）】をタップ。<br>迷ったら「60分」が目安です。</p>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <h3>空き時間を確認する</h3>
+          <p>【空き状況】をタップ → 画面上のメニューを選ぶと、そのメニューで空いている時間が表示されます。</p>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <h3>チャットでご予約</h3>
+          <p>画面左下の <strong>□ アイコン</strong> をタップしてチャットへ。<br>以下をお送りください ✂︎</p>
+          <span class="hint">↓ 送る内容</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 12px;">
+      <div class="chat-box">
+        <h3>✉️ チャットに送る内容</h3>
+        <div class="chat-items">
+          <div class="chat-row">
+            <span class="chat-icon">①</span>
+            <div>
+              <div class="chat-text">ご希望の日時</div>
+              <div class="chat-sub">「◯時までに終わりたい」もOKです</div>
+            </div>
+          </div>
+          <div class="chat-row">
+            <span class="chat-icon">②</span>
+            <div class="chat-text">お名前（フルネーム）</div>
+          </div>
+          <div class="chat-row">
+            <span class="chat-icon">③</span>
+            <div class="chat-text">ご希望メニュー</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">· · ·</div>
+
+    <div class="notice">
+      <div class="notice-title">⚠️ ご予約時のお願い</div>
+      <ul>
+        <li>LINE予約は【前日まで】にお願いします</li>
+        <li>当日のご希望はお電話が確実です</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LINEの使い方 -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-title">How to Use LINE</span>
+    </div>
+
+    <div class="tips">
+      <div class="tip">
+        <div class="tip-icon">📋</div>
+        <div>
+          <h3>メニューが消えてしまったら</h3>
+          <p>画面下の <strong>↓ ボタン</strong> をタップするとメニューが表示されます。もう一度タップすると閉じます。</p>
+        </div>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">💬</div>
+        <div>
+          <h3>チャットの開き方</h3>
+          <p>画面<strong>左下の □ アイコン</strong>（小さな窓マーク）をタップするとチャット画面が開きます。ご質問やご相談もこちらからどうぞ。</p>
+        </div>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">🔔</div>
+        <div>
+          <h3>1対1のトークです</h3>
+          <p>他のお客様には見えません。初めての方のご質問・髪のご相談もお気軽にどうぞ。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-name">Enchanté Hair</div>
+  <div class="footer-tel">📞 <a href="tel:0771245339">0771-24-5339</a></div>
+  <div class="footer-note">亀岡市 · BARBER SHOP<br>当日のご予約はお電話にて承ります</div>
+</footer>
+
+</body>
+</html>
