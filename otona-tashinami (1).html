@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大人の嗜み | Enchanté Hair</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Noto+Sans+JP:wght@200;300;400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F0D09;
+    --ink-mid: #1E1A12;
+    --ink-soft: #2E2820;
+    --gold: #C4965A;
+    --gold-pale: #D9B882;
+    --gold-dim: #8A6A3A;
+    --washi: #F2EDE3;
+    --washi-deep: #E8E0D0;
+    --stone: #9A9080;
+    --stone-light: #C8C0B0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--washi);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 60px 24px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196,150,90,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(196,150,90,0.04) 0%, transparent 60%);
+  }
+
+  /* 和紙テクスチャ風ノイズ */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.45em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: reveal 1s ease 0.2s forwards;
+  }
+
+  .hero-logo {
+    text-align: center;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: reveal 1s ease 0.5s forwards;
+  }
+
+  .hero-logo-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .logo-enchante {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(28px, 8vw, 42px);
+    color: var(--washi);
+    letter-spacing: 0.05em;
+    font-weight: 300;
+  }
+
+  .logo-divider {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  .logo-kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(32px, 9vw, 48px);
+    color: var(--gold);
+    font-weight: 200;
+    line-height: 1;
+  }
+
+  .logo-tasinami {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 3vw, 18px);
+    letter-spacing: 0.4em;
+    color: var(--gold-pale);
+    font-weight: 300;
+  }
+
+  .hero-tagline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(13px, 3.5vw, 16px);
+    color: var(--stone-light);
+    letter-spacing: 0.2em;
+    font-weight: 200;
+    opacity: 0;
+    animation: reveal 1s ease 0.8s forwards;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: reveal 1s ease 1.4s forwards;
+  }
+
+  .hero-scroll span {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: scrollDown 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollDown {
+    0%, 100% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    50% { transform: scaleY(0.3); transform-origin: bottom; opacity: 0.3; }
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 64px 24px;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid rgba(196,150,90,0.15);
+  }
+
+  .intro-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 5vw, 24px);
+    color: var(--gold-pale);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .intro-body {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: var(--stone-light);
+    line-height: 2.2;
+    font-weight: 200;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding: 0 24px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(196,150,90,0.4));
+  }
+
+  .section-label::after {
+    background: linear-gradient(to left, transparent, rgba(196,150,90,0.4));
+  }
+
+  .section-label-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── FEATURED CARD (京 TASINAMI) ── */
+  .featured {
+    padding: 0 16px 48px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .featured-card {
+    background: var(--ink-mid);
+    border: 1px solid rgba(196,150,90,0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.4s ease;
+  }
+
+  .featured-card:hover {
+    border-color: rgba(196,150,90,0.5);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    padding: 4px 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .featured-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* シェービングセットのイメージ（SVGイラスト） */
+  .featured-image svg {
+    width: 60%;
+    max-width: 200px;
+    opacity: 0.15;
+  }
+
+  .featured-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, var(--ink-mid) 100%);
+  }
+
+  .featured-image-logo {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .featured-image-logo .logo-enchante {
+    font-size: 20px;
+  }
+
+  .featured-image-logo .logo-kanji {
+    font-size: 28px;
+  }
+
+  .featured-image-logo .logo-tasinami {
+    font-size: 11px;
+  }
+
+  .featured-body {
+    padding: 24px;
+  }
+
+  .featured-category {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .featured-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--washi);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .featured-desc {
+    font-size: 12px;
+    color: var(--stone-light);
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+
+  .featured-cta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    border-top: 1px solid rgba(196,150,90,0.2);
+    padding-top: 16px;
+  }
+
+  .featured-cta::after {
+    content: '→';
+    transition: transform 0.3s ease;
+  }
+
+  .featured-card:hover .featured-cta::after {
+    transform: translateX(4px);
+  }
+
+  /* ── GRID CARDS ── */
+  .grid-section {
+    padding: 0 16px 48px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .grid-card {
+    background: var(--ink-mid);
+    border: 1px solid rgba(196,150,90,0.12);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .grid-card:hover {
+    border-color: rgba(196,150,90,0.4);
+    transform: translateY(-2px);
+  }
+
+  .grid-card-image {
+    aspect-ratio: 1;
+    background: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .grid-card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(196,150,90,0.05) 0%, transparent 60%);
+  }
+
+  .grid-card-body {
+    padding: 14px 14px 16px;
+  }
+
+  .grid-card-category {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 6px;
+  }
+
+  .grid-card-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--washi);
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+
+  .grid-card-desc {
+    font-size: 11px;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  .coming-soon {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .coming-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(30,26,18,0.8);
+    border: 1px solid rgba(196,150,90,0.3);
+    color: var(--gold-dim);
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    padding: 3px 8px;
+    font-family: 'Cormorant Garamond', serif;
+    z-index: 1;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px 24px 48px;
+    text-align: center;
+    border-top: 1px solid rgba(196,150,90,0.1);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: var(--stone);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 横区切り装飾 */
+  .ornament {
+    text-align: center;
+    color: var(--gold-dim);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.5em;
+    padding: 16px 0 40px;
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-eyebrow">Enchanté Hair · Kameoka</div>
+
+  <div class="hero-logo">
+    <div class="hero-logo-main">
+      <span class="logo-enchante">Enchanté</span>
+      <div class="logo-divider"></div>
+      <span class="logo-kanji">京</span>
+      <span class="logo-tasinami">TASINAMI</span>
+    </div>
+  </div>
+
+  <div class="hero-tagline">大人の嗜み</div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro fade-in">
+  <div class="intro-quote">"本当にいいものだけを、<br>ここに集めました。"</div>
+  <div class="intro-body">
+    亀岡のバーバーが、日々の仕事と暮らしの中で<br>
+    実際に使い、本当にいいと思ったものを紹介します。<br>
+    派手な宣伝文句より、職人の正直な言葉を。
+  </div>
+</section>
+
+<div class="ornament fade-in">· · ·</div>
+
+<!-- FEATURED: 京 TASINAMI -->
+<div class="section-label fade-in">
+  <span class="section-label-text">Featured</span>
+</div>
+
+<div class="featured fade-in">
+  <div class="featured-card" onclick="window.location.href='#tasinami'">
+    <div class="featured-badge">New</div>
+    <div class="featured-image">
+      <!-- バーバーポール・シェービングセットのSVGイラスト -->
+      <svg viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- カミソリ -->
+        <rect x="55" y="20" width="4" height="80" rx="2" fill="#C4965A"/>
+        <path d="M55 20 L75 35 L75 40 L55 40 Z" fill="#D9B882"/>
+        <!-- ブラシ -->
+        <rect x="35" y="50" width="6" height="50" rx="3" fill="#8A6A3A"/>
+        <ellipse cx="38" cy="50" rx="10" ry="16" fill="#C4965A" opacity="0.6"/>
+        <!-- カップ -->
+        <rect x="70" y="80" width="30" height="35" rx="3" fill="#2E2820" stroke="#C4965A" stroke-width="1"/>
+        <rect x="73" y="83" width="24" height="5" rx="1" fill="#C4965A" opacity="0.4"/>
+      </svg>
+      <div class="featured-image-overlay"></div>
+      <div class="featured-image-logo">
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+          <span class="logo-enchante">Enchanté</span>
+          <div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div>
+          <span class="logo-kanji" style="font-size:28px;">京</span>
+          <span class="logo-tasinami" style="font-size:11px;">TASINAMI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="featured-body">
+      <div class="featured-category">Shaving · Skincare</div>
+      <div class="featured-title">亀岡のバーバーが<br>本気で作ったシェービングセット</div>
+      <div class="featured-desc">
+        お客様の一言がきっかけで生まれた、京都発のシェービングセット。
+        バーバーが毎日使う道具へのこだわりを、そのまま形にしました。
+      </div>
+      <div class="featured-cta">詳しく見る</div>
+    </div>
+  </div>
+</div>
+
+<div class="ornament fade-in">· · ·</div>
+
+<!-- GRID: その他カテゴリ -->
+<div class="section-label fade-in">
+  <span class="section-label-text">Categories</span>
+</div>
+
+<div class="grid-section fade-in">
+  <div class="grid">
+
+    <!-- Reuzel -->
+    <a class="grid-card" href="#reuzel">
+      <div class="grid-card-image">🐗</div>
+      <div class="grid-card-body">
+        <div class="grid-card-category">Hair · Styling</div>
+        <div class="grid-card-title">Reuzel<br>ポマード</div>
+        <div class="grid-card-desc">青・赤・緑<br>違いを解説</div>
+      </div>
+    </a>
+
+    <!-- ビール -->
+    <a class="grid-card coming-soon" href="#beer">
+      <div class="grid-card-image">
+        <span class="coming-badge">Coming Soon</span>
+        🍺
+      </div>
+      <div class="grid-card-body">
+        <div class="grid-card-category">Drink · Beer</div>
+        <div class="grid-card-title">冷蔵庫の<br>お気に入り</div>
+        <div class="grid-card-desc">世界のビール<br>店主セレクト</div>
+      </div>
+    </a>
+
+    <!-- 亀岡スポット -->
+    <a class="grid-card coming-soon" href="#kameoka">
+      <div class="grid-card-image">
+        <span class="coming-badge">Coming Soon</span>
+        🏯
+      </div>
+      <div class="grid-card-body">
+        <div class="grid-card-category">Local · Kameoka</div>
+        <div class="grid-card-title">亀岡・京都<br>おすすめ</div>
+        <div class="grid-card-desc">地元民だから<br>知っている場所</div>
+      </div>
+    </a>
+
+    <!-- その他追加予定 -->
+    <a class="grid-card coming-soon" href="#">
+      <div class="grid-card-image">
+        <span class="coming-badge">Coming Soon</span>
+        ✦
+      </div>
+      <div class="grid-card-body">
+        <div class="grid-card-category">More</div>
+        <div class="grid-card-title">準備中</div>
+        <div class="grid-card-desc">随時更新して<br>いきます</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="fade-in">
+  <div class="footer-name">Enchanté Hair</div>
+  <div class="footer-note">
+    亀岡市 · 男性専門美容室<br>
+    バーバーが本当にいいと思うものだけを。
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer でフェードイン
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
