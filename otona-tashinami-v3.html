@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大人の嗜み | Enchanté Hair</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Noto+Sans+JP:wght@200;300;400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F0D09;
+    --ink-mid: #1E1A12;
+    --ink-soft: #2E2820;
+    --gold: #C4965A;
+    --gold-pale: #D9B882;
+    --gold-dim: #8A6A3A;
+    --washi: #F2EDE3;
+    --washi-deep: #E8E0D0;
+    --stone: #9A9080;
+    --stone-light: #C8C0B0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--washi);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 60px 24px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196,150,90,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(196,150,90,0.04) 0%, transparent 60%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.45em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: reveal 1s ease 0.2s forwards;
+    position: relative;
+  }
+
+  .hero-logo {
+    text-align: center;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: reveal 1s ease 0.5s forwards;
+    position: relative;
+  }
+
+  .hero-logo-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .logo-enchante {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--washi);
+    letter-spacing: 0.05em;
+  }
+
+  .logo-divider {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  .logo-kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 40px;
+    font-weight: 200;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .logo-tasinami {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.25em;
+    color: var(--washi-deep);
+  }
+
+  .hero-tagline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    color: var(--stone-light);
+    font-weight: 200;
+    opacity: 0;
+    animation: reveal 1s ease 0.8s forwards;
+    position: relative;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: reveal 1s ease 1.2s forwards;
+  }
+
+  .hero-scroll span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 48px 32px 40px;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro-quote {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--washi);
+    line-height: 2;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    position: relative;
+    padding: 0 20px;
+  }
+
+  .intro-quote::before,
+  .intro-quote::after {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    color: var(--gold-dim);
+    position: absolute;
+    opacity: 0.4;
+    line-height: 1;
+  }
+
+  .intro-quote::before { top: -4px; left: 0; }
+  .intro-quote::after  { bottom: -16px; right: 0; content: '"'; }
+
+  .intro-body {
+    font-size: 12px;
+    color: var(--stone);
+    line-height: 2.2;
+    letter-spacing: 0.06em;
+    margin-top: 24px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+    margin: 0 auto 24px;
+    max-width: 480px;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(196,150,90,0.4));
+  }
+
+  .section-label::after {
+    background: linear-gradient(to left, transparent, rgba(196,150,90,0.4));
+  }
+
+  .section-label-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── FEATURED CARD ── */
+  .featured {
+    padding: 0 16px 48px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .featured-card {
+    background: var(--ink-mid);
+    border: 1px solid rgba(196,150,90,0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.4s ease;
+  }
+
+  .featured-card:hover {
+    border-color: rgba(196,150,90,0.5);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    padding: 4px 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* シェービングセット イラストエリア */
+  .featured-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,150,90,0.08) 0%, transparent 70%);
+  }
+
+  /* SVGイラスト */
+  .shaving-illustration {
+    position: relative;
+    z-index: 1;
+    width: 65%;
+    max-width: 220px;
+  }
+
+  .featured-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, var(--ink-mid) 100%);
+    z-index: 2;
+  }
+
+  /* ロゴをカード画像内に表示 */
+  .featured-image-logo {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
+  }
+
+  .featured-body {
+    padding: 24px;
+  }
+
+  .featured-category {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .featured-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--washi);
+    line-height: 1.7;
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .featured-desc {
+    font-size: 12px;
+    color: var(--stone-light);
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+
+  .featured-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid rgba(196,150,90,0.2);
+    padding-top: 16px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s ease infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .status-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .status-note {
+    font-size: 11px;
+    color: var(--stone);
+    letter-spacing: 0.05em;
+    margin-left: auto;
+  }
+
+  /* ── GRID CARDS ── */
+  .grid-section {
+    padding: 0 16px 48px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .grid-card {
+    background: var(--ink-mid);
+    border: 1px solid rgba(196,150,90,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    opacity: 0.45;
+    pointer-events: none;
+    display: block;
+    text-decoration: none;
+  }
+
+  .grid-card-image {
+    aspect-ratio: 1;
+    background: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .grid-card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(196,150,90,0.04) 0%, transparent 60%);
+  }
+
+  .cs-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(30,26,18,0.85);
+    border: 1px solid rgba(196,150,90,0.25);
+    color: var(--gold-dim);
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    padding: 3px 8px;
+    font-family: 'Cormorant Garamond', serif;
+    z-index: 1;
+  }
+
+  .grid-card-body {
+    padding: 12px 12px 14px;
+  }
+
+  .grid-card-category {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 5px;
+  }
+
+  .grid-card-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--washi);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  .grid-card-desc {
+    font-size: 10px;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  /* ── ORNAMENT ── */
+  .ornament {
+    text-align: center;
+    color: var(--gold-dim);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.5em;
+    padding: 8px 0 40px;
+    opacity: 0.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px 24px 48px;
+    text-align: center;
+    border-top: 1px solid rgba(196,150,90,0.1);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: var(--stone);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* グリッドはComing Soonなので常に薄く */
+  .grid-section.fade-in.visible {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-eyebrow">Enchanté Hair · Kameoka</div>
+
+  <div class="hero-logo">
+    <div class="hero-logo-main">
+      <span class="logo-enchante">Enchanté</span>
+      <div class="logo-divider"></div>
+      <span class="logo-kanji">京</span>
+      <span class="logo-tasinami">TASINAMI</span>
+    </div>
+  </div>
+
+  <div class="hero-tagline">大人の嗜み</div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro fade-in">
+  <div class="intro-quote">
+    本当にいいものだけを、<br>ここに集めました。
+  </div>
+  <div class="intro-body">
+    亀岡のバーバーが、日々の仕事と暮らしの中で<br>
+    実際に使い、本当にいいと思ったものを紹介します。<br>
+    派手な宣伝文句より、職人の正直な言葉を。
+  </div>
+</section>
+
+<div class="ornament fade-in">· · ·</div>
+
+<!-- FEATURED: 京 TASINAMI -->
+<div class="section-label fade-in">
+  <span class="section-label-text">Featured · Shaving</span>
+</div>
+
+<div class="featured fade-in">
+  <div class="featured-card">
+    <div class="featured-badge">New</div>
+
+    <!-- シェービングセット イラスト -->
+    <div class="featured-image">
+      <svg class="shaving-illustration" viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- トレイ -->
+        <rect x="20" y="155" width="200" height="8" rx="3" fill="#2E2820" stroke="#C4965A" stroke-width="1" stroke-opacity="0.5"/>
+        <rect x="14" y="158" width="212" height="4" rx="2" fill="#1E1A12" stroke="#C4965A" stroke-width="0.5" stroke-opacity="0.3"/>
+
+        <!-- シェービングカップ -->
+        <rect x="30" y="105" width="65" height="52" rx="4" fill="#1E1A12" stroke="#C4965A" stroke-width="1.5" stroke-opacity="0.6"/>
+        <rect x="34" y="109" width="57" height="10" rx="2" fill="#C4965A" opacity="0.3"/>
+        <!-- 京マーク on カップ -->
+        <text x="62" y="145" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="22" fill="#C4965A" opacity="0.5">京</text>
+
+        <!-- ゴールドスタンド -->
+        <rect x="138" y="130" width="6" height="28" rx="3" fill="#C4965A" opacity="0.7"/>
+        <ellipse cx="141" cy="158" rx="20" ry="5" fill="#C4965A" opacity="0.4"/>
+        <rect x="127" y="108" width="3" height="44" rx="1.5" fill="#C4965A" opacity="0.5"/>
+        <rect x="150" y="108" width="3" height="44" rx="1.5" fill="#C4965A" opacity="0.5"/>
+
+        <!-- ストレートレザー -->
+        <rect x="155" y="55" width="6" height="75" rx="3" fill="#8A6A3A"/>
+        <path d="M155 55 L185 68 L185 75 L155 75 Z" fill="#D9B882" opacity="0.8"/>
+        <rect x="153" y="52" width="10" height="6" rx="2" fill="#C4965A" opacity="0.6"/>
+
+        <!-- シェービングブラシ -->
+        <rect x="100" y="100" width="8" height="58" rx="4" fill="#8A6A3A"/>
+        <ellipse cx="104" cy="98" rx="16" ry="24" fill="#C4965A" opacity="0.35"/>
+        <ellipse cx="104" cy="80" rx="13" ry="10" fill="#D9B882" opacity="0.2"/>
+
+        <!-- バーバーポールミニチュア -->
+        <rect x="195" y="95" width="16" height="62" rx="8" fill="#1E1A12" stroke="#C4965A" stroke-width="1" stroke-opacity="0.5"/>
+        <path d="M195 105 Q203 110 211 105 Q203 115 195 120 Q203 125 211 120 Q203 130 195 135 Q203 140 211 135 Q203 145 195 150" stroke="#C4965A" stroke-width="2.5" stroke-opacity="0.5" fill="none"/>
+        <ellipse cx="203" cy="95" rx="8" ry="4" fill="#C4965A" opacity="0.5"/>
+        <ellipse cx="203" cy="157" rx="8" ry="4" fill="#C4965A" opacity="0.4"/>
+      </svg>
+
+      <div class="featured-image-overlay"></div>
+
+      <!-- ロゴ -->
+      <div class="featured-image-logo">
+        <span class="logo-enchante" style="font-size:18px;">Enchanté</span>
+        <div style="width:1px;height:22px;background:var(--gold);opacity:0.5;"></div>
+        <span class="logo-kanji" style="font-size:26px;">京</span>
+        <span class="logo-tasinami" style="font-size:11px;">TASINAMI</span>
+      </div>
+    </div>
+
+    <div class="featured-body">
+      <div class="featured-category">Shaving · First Set</div>
+      <div class="featured-title">
+        はじめてを、雑にしない。<br>
+        <span style="font-size:14px;color:var(--stone-light);">大人の男性へ贈る、はじめてのシェービングセット</span>
+      </div>
+      <div class="featured-desc">
+        お客様の一言がきっかけで生まれた、京都発のシェービングセット。<br>
+        バーバーが毎日使う道具へのこだわりを、そのまま形にしました。<br>
+        セット内容・価格など詳細は近日公開予定。
+      </div>
+      <div class="featured-status">
+        <div class="status-dot"></div>
+        <div class="status-text">Coming Soon</div>
+        <div class="status-note">発売時にLINEでお知らせ</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ornament fade-in">· · ·</div>
+
+<!-- GRID: その他カテゴリ（全部Coming Soon） -->
+<div class="section-label fade-in">
+  <span class="section-label-text">Coming Soon</span>
+</div>
+
+<div class="grid-section fade-in">
+  <div class="grid">
+
+    <!-- 整髪料 -->
+    <div class="grid-card">
+      <div class="grid-card-image">
+        <span class="cs-badge">Coming Soon</span>
+        🐗
+      </div>
+      <div class="grid-card-body">
+        <div class="grid-card-category">Hair · Styling</div>
+        <div class="grid-card-title">整髪料・<br>ポマード</div>
+        <div class="grid-card-desc">バーバーの<br>おすすめ</div>
+      </div>
+    </div>
+
+    <!-- ビール -->
+    <div class="grid-card">
+      <div class="grid-card-image">
+        <span class="cs-badge">Coming Soon</span>
+        🍺
+      </div>
+      <div class="grid-card-body">
+        <div class="grid-card-category">Drink · Beer</div>
+        <div class="grid-card-title">冷蔵庫の<br>お気に入り</div>
+        <div class="grid-card-desc">世界のビール<br>店主セレクト</div>
+      </div>
+    </div>
+
+    <!-- 亀岡スポット -->
+    <div class="grid-card">
+      <div class="grid-card-image">
+        <span class="cs-badge">Coming Soon</span>
+        🏯
+      </div>
+      <div class="grid-card-body">
+        <div class="grid-card-category">Local · Kameoka</div>
+        <div class="grid-card-title">亀岡・京都<br>おすすめ</div>
+        <div class="grid-card-desc">地元民だから<br>知っている場所</div>
+      </div>
+    </div>
+
+    <!-- その他 -->
+    <div class="grid-card">
+      <div class="grid-card-image">
+        <span class="cs-badge">Coming Soon</span>
+        ✦
+      </div>
+      <div class="grid-card-body">
+        <div class="grid-card-category">More</div>
+        <div class="grid-card-title">準備中</div>
+        <div class="grid-card-desc">随時更新して<br>いきます</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="fade-in">
+  <div class="footer-name">Enchanté Hair</div>
+  <div class="footer-note">
+    亀岡市 · 男性専門美容室<br>
+    バーバーが本当にいいと思うものだけを。
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
