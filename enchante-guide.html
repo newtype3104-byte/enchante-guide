@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ご案内 | Enchanté Hair</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --gold: #B8965A;
@@ -23,9 +23,10 @@
     background: var(--cream);
     color: var(--text);
     font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     min-height: 100vh;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
   }
 
   /* Header */
@@ -62,36 +63,35 @@
   }
 
   .salon-sub {
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.3em;
     color: #8A7A5A;
-    text-transform: uppercase;
   }
 
   /* Welcome */
   .welcome {
     background: var(--dark-mid);
-    padding: 24px;
+    padding: 28px 24px;
     text-align: center;
     border-bottom: 1px solid #3A3020;
   }
 
   .welcome-icon {
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 32px;
+    margin-bottom: 12px;
     display: block;
   }
 
   .welcome p {
     color: var(--cream-mid);
-    font-size: 13px;
-    line-height: 1.9;
+    font-size: 15px;
+    line-height: 2;
     letter-spacing: 0.05em;
   }
 
   .welcome strong {
     color: var(--gold-light);
-    font-weight: 400;
+    font-weight: 500;
   }
 
   /* Main content */
@@ -103,7 +103,7 @@
 
   /* Section */
   .section {
-    margin-top: 32px;
+    margin-top: 36px;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeUp 0.6s ease forwards;
@@ -113,6 +113,7 @@
   .section:nth-child(2) { animation-delay: 0.25s; }
   .section:nth-child(3) { animation-delay: 0.4s; }
   .section:nth-child(4) { animation-delay: 0.55s; }
+  .section:nth-child(5) { animation-delay: 0.7s; }
 
   @keyframes fadeUp {
     to { opacity: 1; transform: translateY(0); }
@@ -122,7 +123,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
 
   .section-label::before,
@@ -135,11 +136,10 @@
   }
 
   .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
-    letter-spacing: 0.25em;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     color: var(--gold);
-    text-transform: uppercase;
     white-space: nowrap;
   }
 
@@ -147,13 +147,13 @@
   .flow {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
 
   .flow-item {
     background: white;
-    border-radius: 4px;
-    padding: 16px 18px;
+    border-radius: 6px;
+    padding: 18px 20px;
     display: flex;
     gap: 16px;
     align-items: flex-start;
@@ -163,95 +163,177 @@
 
   .flow-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
+    font-size: 32px;
     color: var(--gold);
     line-height: 1;
-    min-width: 24px;
+    min-width: 28px;
     font-style: italic;
   }
 
   .flow-content h3 {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     color: var(--dark);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     letter-spacing: 0.03em;
   }
 
   .flow-content p {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-light);
-    line-height: 1.8;
+    line-height: 1.9;
   }
 
   .flow-content .hint {
     display: inline-block;
-    margin-top: 6px;
+    margin-top: 8px;
     background: var(--cream-mid);
     color: var(--gold);
-    font-size: 11px;
-    padding: 3px 10px;
+    font-size: 13px;
+    padding: 4px 12px;
     border-radius: 20px;
     letter-spacing: 0.05em;
+    font-weight: 500;
   }
 
-  /* Chat guide */
-  .chat-box {
-    background: white;
-    border-radius: 4px;
-    padding: 18px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-
-  .chat-box h3 {
-    font-size: 12px;
-    color: var(--text-light);
-    letter-spacing: 0.1em;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--cream-mid);
-  }
-
-  .chat-items {
+  /* Two entry points */
+  .entry-points {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    margin-bottom: 16px;
   }
 
-  .chat-row {
+  .entry-card {
+    background: white;
+    border-radius: 6px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 3px solid var(--gold);
+  }
+
+  .entry-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .entry-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .entry-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.9;
+  }
+
+  .entry-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    background: rgba(184,150,90,0.12);
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  /* Merge arrow */
+  .merge-indicator {
+    text-align: center;
+    padding: 6px 0;
+    color: var(--gold);
+    opacity: 0.7;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+
+  /* First-time box */
+  .first-time {
+    background: #FDF8F0;
+    border: 1px solid rgba(184,150,90,0.3);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-top: 14px;
+  }
+
+  .first-time-title {
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .first-time p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.9;
+  }
+
+  .first-time .info-items {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .first-time .info-row {
     display: flex;
     align-items: baseline;
     gap: 8px;
-    font-size: 13px;
+    font-size: 15px;
   }
 
-  .chat-icon {
+  .first-time .info-icon {
     color: var(--gold);
-    font-size: 14px;
-    min-width: 18px;
+    font-size: 15px;
+    min-width: 20px;
+    font-weight: 500;
   }
 
-  .chat-text {
+  .first-time .info-text {
     color: var(--text);
     line-height: 1.7;
+    font-weight: 500;
   }
 
-  .chat-sub {
-    font-size: 11px;
+  .first-time .info-sub {
+    font-size: 12px;
     color: var(--text-light);
+    margin-top: 8px;
+    line-height: 1.8;
   }
 
   /* LINE tips */
   .tips {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .tip {
     background: white;
-    border-radius: 4px;
-    padding: 14px 16px;
+    border-radius: 6px;
+    padding: 16px 18px;
     display: flex;
     gap: 14px;
     align-items: flex-start;
@@ -259,44 +341,44 @@
   }
 
   .tip-icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     background: var(--dark);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 18px;
     flex-shrink: 0;
   }
 
   .tip h3 {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     color: var(--dark);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .tip p {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-light);
-    line-height: 1.7;
+    line-height: 1.8;
   }
 
   /* Notice */
   .notice {
     background: #FDF8F0;
     border: 1px solid rgba(184,150,90,0.3);
-    border-radius: 4px;
-    padding: 16px 18px;
+    border-radius: 6px;
+    padding: 18px 20px;
   }
 
   .notice-title {
-    font-size: 11px;
-    letter-spacing: 0.15em;
+    font-size: 13px;
+    letter-spacing: 0.12em;
     color: var(--gold);
     margin-bottom: 10px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .notice ul {
@@ -304,10 +386,10 @@
   }
 
   .notice li {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-light);
-    line-height: 1.8;
-    padding-left: 14px;
+    line-height: 1.9;
+    padding-left: 16px;
     position: relative;
   }
 
@@ -322,7 +404,7 @@
   /* Divider */
   .divider {
     text-align: center;
-    margin: 8px 0 4px;
+    margin: 10px 0 6px;
     color: var(--gold);
     opacity: 0.4;
     font-size: 18px;
@@ -332,7 +414,7 @@
   /* Footer */
   footer {
     background: var(--dark);
-    padding: 24px;
+    padding: 28px 24px;
     text-align: center;
     position: relative;
   }
@@ -354,7 +436,7 @@
   }
 
   .footer-tel {
-    font-size: 12px;
+    font-size: 14px;
     color: #6B5F4A;
     letter-spacing: 0.1em;
   }
@@ -366,9 +448,9 @@
 
   .footer-note {
     margin-top: 12px;
-    font-size: 11px;
+    font-size: 13px;
     color: #5A5040;
-    line-height: 1.8;
+    line-height: 1.9;
   }
 </style>
 </head>
@@ -376,71 +458,94 @@
 
 <header>
   <div class="salon-name">Enchanté Hair</div>
-  <div class="salon-sub">Kameoka · Kyoto</div>
+  <div class="salon-sub">京都 · 亀岡</div>
 </header>
 
 <div class="welcome">
   <span class="welcome-icon">💈</span>
   <p>アンシャンテヘアーへのご登録、ありがとうございます。<br>
-  LINEから<strong>最新の空き状況</strong>がいつでもご確認いただけます。</p>
+  LINEから<strong>最新の空き状況の確認・ご予約</strong>がいつでもできます。</p>
 </div>
 
 <main>
 
+  <!-- 予約の入口 -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-title">予約の入口は2つ</span>
+    </div>
+
+    <div class="entry-points">
+      <div class="entry-card">
+        <div class="entry-icon">🌐</div>
+        <div>
+          <div class="entry-badge">入口 A</div>
+          <h3>ホームページから</h3>
+          <p>ホームページの空き状況パネルから、空いている時間をタップして予約できます。</p>
+        </div>
+      </div>
+
+      <div class="entry-card">
+        <div class="entry-icon">💬</div>
+        <div>
+          <div class="entry-badge">入口 B</div>
+          <h3>LINEメニューから</h3>
+          <p>LINEの画面下メニュー【空き状況】をタップすると、空き状況ページが開きます。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="merge-indicator">▼ どちらも同じ流れです ▼</div>
+  </div>
+
   <!-- 予約の流れ -->
   <div class="section">
     <div class="section-label">
-      <span class="section-title">Reservation Flow</span>
+      <span class="section-title">ご予約の流れ</span>
     </div>
 
     <div class="flow">
       <div class="flow-item">
         <div class="flow-num">1</div>
         <div class="flow-content">
-          <h3>メニューを確認する</h3>
-          <p>右上のメニューから【メニュー（HP）】をタップ。<br>迷ったら「60分」が目安です。</p>
+          <h3>メニューを選ぶ</h3>
+          <p>空き状況ページの上部にメニューが並んでいます。<br>ご希望のメニューをタップしてください。<br>迷ったら「60分」が目安です。</p>
         </div>
       </div>
 
       <div class="flow-item">
         <div class="flow-num">2</div>
         <div class="flow-content">
-          <h3>空き時間を確認する</h3>
-          <p>【空き状況】をタップ → 画面上のメニューを選ぶと、そのメニューで空いている時間が表示されます。</p>
+          <h3>空いている時間をタップ</h3>
+          <p>選んだメニューに合う空き時間が表示されます。<br>ご希望の時間をタップすると、<strong>自動でLINEのチャット画面</strong>が開きます。</p>
         </div>
       </div>
 
       <div class="flow-item">
         <div class="flow-num">3</div>
         <div class="flow-content">
-          <h3>チャットでご予約</h3>
-          <p>画面左下の <strong>□ アイコン</strong> をタップしてチャットへ。<br>以下をお送りください ✂︎</p>
-          <span class="hint">↓ 送る内容</span>
+          <h3>そのまま送信するだけ</h3>
+          <p>チャット画面に予約内容が自動で入力されています。<br>内容を確認して、<strong>そのまま送信</strong>してください。</p>
+          <span class="hint">これだけで予約完了です ✂︎</span>
         </div>
       </div>
     </div>
 
-    <div style="margin-top: 12px;">
-      <div class="chat-box">
-        <h3>✉️ チャットに送る内容</h3>
-        <div class="chat-items">
-          <div class="chat-row">
-            <span class="chat-icon">①</span>
-            <div>
-              <div class="chat-text">ご希望の日時</div>
-              <div class="chat-sub">「◯時までに終わりたい」もOKです</div>
-            </div>
-          </div>
-          <div class="chat-row">
-            <span class="chat-icon">②</span>
-            <div class="chat-text">お名前（フルネーム）</div>
-          </div>
-          <div class="chat-row">
-            <span class="chat-icon">③</span>
-            <div class="chat-text">ご希望メニュー</div>
-          </div>
+    <!-- 初めてのお客様 -->
+    <div class="first-time">
+      <div class="first-time-title">✨ 初めてご利用のお客様へ</div>
+      <p>予約メッセージを送信後、以下を追加でお送りください。</p>
+      <div class="info-items">
+        <div class="info-row">
+          <span class="info-icon">①</span>
+          <div class="info-text">お名前（フルネーム）</div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">②</span>
+          <div class="info-text">お電話番号</div>
         </div>
       </div>
+      <p class="info-sub">※ 2回目以降はタップ＆送信のみでOKです</p>
     </div>
 
     <div class="divider">· · ·</div>
@@ -457,7 +562,7 @@
   <!-- LINEの使い方 -->
   <div class="section">
     <div class="section-label">
-      <span class="section-title">How to Use LINE</span>
+      <span class="section-title">LINEの操作方法</span>
     </div>
 
     <div class="tips">
